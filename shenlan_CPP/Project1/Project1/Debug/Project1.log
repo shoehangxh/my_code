@@ -1,0 +1,4 @@
+﻿  main.cpp
+d:\my_code\shenlan_cpp\project1\project1\main.cpp(19): warning C4101: “z”: 未引用的局部变量
+d:\my_code\shenlan_cpp\project1\project1\main.cpp(18): warning C4101: “y”: 未引用的局部变量
+  Project1.vcxproj -> D:\my_code\shenlan_CPP\Project1\Debug\Project1.exe
