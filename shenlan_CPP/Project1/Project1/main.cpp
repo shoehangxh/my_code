@@ -13,6 +13,7 @@ int main()
 {
 	// 8000~8003 not 7999~8002 (actually, 8000~8064 for a time in cash)
 	int x = 10;
+	int* p = &x;
 	unsigned short a = 10;
 	unsigned int b = -1;
 	char y; //ASCII UTF-8
@@ -22,4 +23,7 @@ int main()
 	std::cout << sizeof(char) << std::endl;
 	std::cout << sizeof(STR) << std::endl; //not 1+4 but 8
 	std::cout << b << std::endl; //4294967295
+	std::cout << *p << std::endl;
+	system("pause");
+	return 0;
 }
