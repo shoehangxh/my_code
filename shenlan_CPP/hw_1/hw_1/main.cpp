@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
+#include <math.h>
 
 using namespace std;
 int rand_alg(int mode)//随机选定加减乘除中的一个运算
@@ -44,9 +45,9 @@ int rand_alg(int mode)//随机选定加减乘除中的一个运算
 				alg = '*';
 			}
 		}
-		return alg;
+		
 	}
-
+	return alg;
 }
 int caculate(char alg, int a, int b)//计算出随机选出的运算下的正确值
 {
@@ -66,7 +67,7 @@ int caculate(char alg, int a, int b)//计算出随机选出的运算下的正确值
 	else if (alg == '/')
 	{
 		right = a / b;
-		cout << "ps：Just write the integer part haha " << endl;
+		//cout << "ps：Just write the integer part haha " << endl;
 	}
 	return right;
 }
@@ -84,21 +85,73 @@ int main()
 	double time_min = 1000000;
 	cout << "how many questions u want? : \n" << endl;
 	cin >> num;
+	while (cin.fail())
+	{
+			cin.clear();
+			cin.sync();
+			while (cin.get() != '\n') {
+				continue;
+			}
+			cout <<" input an integer number plz \n" << endl;
+			cin >> num;
+	}
 	cout << "which range can u accept ? from 0 to ?: \n" << endl;
 	cin >> range;
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.sync();
+		while (cin.get() != '\n') {
+			continue;
+		}
+		cout << " input an integer number plz \n" << endl;
+		cin >> range;
+	}
 	cout << "which mode do u want ? input 1 for only +&-, or 2 for *&/ extra :  \n" << endl;
 	cin >> mode;
+	while ((mode != 1) and (mode != 2))
+	{
+		cin.clear();
+		cin.sync();
+		while (cin.get() != '\n') {
+			continue;
+		}
+		cout << " input 1 or 2 plz \n" << endl;
+		cin >> mode;
+	}
 
 	for (int x = 0; x < num; x += 1)
 	{
 		int a = rand()%range;
 		int b = rand()%range;
 		char alg = rand_alg(mode);
+		if (alg == '/')  //防止除数为0，防止不能整除
+		{
+			while(b == 0) b = rand() % range;
+			double y = sqrt(double(range));
+			while (a > int(y) or b > int(y))
+			{
+				if (a > int(y)) a = rand() % range;
+				else if (b > int(y)) b = rand() % range;
+			}
+			int right = caculate('*', a, b);
+			a = right;
+		}
 		int c;
 		cout << " so what is " << a << alg << b << '?' << endl;
 		int right = caculate(alg, a, b);
 		start = clock();
 		cin >> c;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.sync();
+			while (cin.get() != '\n') {
+				continue;
+			}
+			cout << " input a number plz \n" << endl;
+			cin >> c;
+		}
 		end = clock();
 			if (c!=right)
 			{
