@@ -85,7 +85,7 @@ int main()
 	double time_min = 1000000;
 	cout << "how many questions u want? : \n" << endl;
 	cin >> num;
-	while (cin.fail())
+	while (cin.fail())//检验输入是否正确
 	{
 			cin.clear();
 			cin.sync();
@@ -179,6 +179,7 @@ int main()
 					cout << "u r right! end of the prc and your score is(up to 100): \n " << corr << endl;
 				}
 			}
+			x += 1;
 			double time = end - start;
 			time_all += time;
 			round += 1;
@@ -188,8 +189,9 @@ int main()
 				round_min = round;
 			}
 			cout << "the time u cost this round is:   " << time / CLOCKS_PER_SEC << "s \n" << endl;
-	};
+	}
 	double time_avg = time_all / double(num);
-	cout << "the time u cost for average is:   " << time_avg / CLOCKS_PER_SEC << "s \n" << endl;
+	cout << "the time u cost on average is:   " << time_avg / CLOCKS_PER_SEC << "s \n" << endl;
 	cout << "the time u cost at least is:   " << time_min / CLOCKS_PER_SEC << "s  in round " << round_min << endl;
+	system("pause");
 }
