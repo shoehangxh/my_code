@@ -1,0 +1,3 @@
+﻿  main.cpp
+d:\my_code\shenlan_cpp\hw_1\hw_1\main.cpp(50): warning C4715: “rand_alg”: 不是所有的控件路径都返回值
+  hw_1.vcxproj -> D:\my_code\shenlan_CPP\hw_1\Debug\hw_1.exe
